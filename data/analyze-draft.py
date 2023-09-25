@@ -4,7 +4,9 @@ def main():
     f = open("./data/clean_data.csv","r")
     csv_reader = csv.DictReader(f)
     csv_list = list(csv_reader)
-
+    
+    print('Year'.ljust(15) + 'Average Temperature Anomal(F)')
+    
     for current_decade in range(1880,2023,10):
         year_count = 0
         sum_anomly_decade = 0
@@ -15,7 +17,7 @@ def main():
                 sum_anomly_decade += avg_anomly_year
         result = round(sum_anomly_decade/10, 2)
         
-        print(f"Average temperature anomaly {current_decade} to {current_decade+year_count}: {result}F")
+        print(str(current_decade) + "-" + str(current_decade+year_count-1).ljust(10) +  str(result).rjust(5))
 
 if __name__ == "__main__":
     main()
